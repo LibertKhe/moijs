@@ -144,7 +144,8 @@ class_specifier:
 /*
     |   IDENT error end_ident
         {
-            console.log("Error: %s: bad class_specifier for \"%s\"",
+            console.log("Error: %s: bad class_specifier 
+            \"%s\"",
                         (new Track(@1)).toString(), $1);
         }
 */
@@ -371,13 +372,13 @@ section:
         PUBLIC element_list
         {
             $$ = $2;
-            for (var element in $$)
+            for (var element of $$)
                 element.isPublic = true;
         }
     |   PROTECTED element_list
         {
             $$ = $2;
-            for (var element in $$)
+            for (var element of $$)
                 element.isProtected = true;
         }
     |   algorithm_section
@@ -456,7 +457,7 @@ component_clause:
             /* setup backwards links to clause, to obtain type_specifier */
             $$.componentList.forEach(function(componentDeclaration) {
                 componentDeclaration.componentClause = $$;
-            });
+            }, this);
         }
     ;
 
