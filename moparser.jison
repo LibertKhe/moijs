@@ -119,7 +119,7 @@ kind:
         }
     |   OPERATOR
         {
-            $$ = new OpertaorDefinition(track(@$));
+            $$ = new OperatorDefinition(track(@$));
         }
     ;
 
